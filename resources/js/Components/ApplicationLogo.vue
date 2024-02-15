@@ -7,7 +7,7 @@
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            class="text-white p-1 bg-indigo-500 rounded-full"
+            class="text-white p-0.5 bg-indigo-500 rounded-full"
         />
     </div>
 </template>
