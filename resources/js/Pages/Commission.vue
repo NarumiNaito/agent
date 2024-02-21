@@ -4,12 +4,12 @@ import { Head } from "@inertiajs/vue3";
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head title="依頼する" />
 
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                ダッシュボード
+                依頼する
             </h2>
         </template>
     </AuthenticatedLayout>

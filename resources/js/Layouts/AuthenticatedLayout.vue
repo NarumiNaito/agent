@@ -6,14 +6,15 @@ import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import { Link } from "@inertiajs/vue3";
+import Footer from "@/Components/Footer.vue";
 
 const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-    <div>
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+    <div class="bg-teal-200 font-serif">
+        <div class="min-h-screen">
+            <nav class="">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -22,9 +23,10 @@ const showingNavigationDropdown = ref(false);
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
                                     <ApplicationLogo
-                                        class="block h-15 w-14 fill-current text-gray-800"
+                                        class="block h-12 w-12 fill-current text-gray-800"
                                     />
                                 </Link>
+                                <h1 class="ml-2">地場産エージェント</h1>
                             </div>
 
                             <!-- Navigation Links -->
@@ -35,7 +37,21 @@ const showingNavigationDropdown = ref(false);
                                     :href="route('dashboard')"
                                     :active="route().current('dashboard')"
                                 >
-                                    Dashboard
+                                    ダッシュボード
+                                </NavLink>
+
+                                <NavLink
+                                    :href="route('works.index')"
+                                    :active="route().current('works.index')"
+                                >
+                                    依頼一覧
+                                </NavLink>
+
+                                <NavLink
+                                    :href="route('works.create')"
+                                    :active="route().current('works.create')"
+                                >
+                                    依頼する
                                 </NavLink>
                             </div>
                         </div>
@@ -48,7 +64,7 @@ const showingNavigationDropdown = ref(false);
                                         <span class="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-indigo-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
                                                 {{ $page.props.auth.user.name }}
 
@@ -142,7 +158,21 @@ const showingNavigationDropdown = ref(false);
                             :href="route('dashboard')"
                             :active="route().current('dashboard')"
                         >
-                            Dashboard
+                            ダッシュボード
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink
+                            :href="route('works.index')"
+                            :active="route().current('works.index')"
+                        >
+                            依頼一覧
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink
+                            :href="route('commission')"
+                            :active="route().current('commission')"
+                        >
+                            依頼する
                         </ResponsiveNavLink>
                     </div>
 
@@ -174,7 +204,7 @@ const showingNavigationDropdown = ref(false);
             </nav>
 
             <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
+            <header class="bg-teal-300 shadow" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>
@@ -185,5 +215,6 @@ const showingNavigationDropdown = ref(false);
                 <slot />
             </main>
         </div>
+        <Footer />
     </div>
 </template>

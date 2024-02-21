@@ -28,6 +28,7 @@ const submit = () => {
 <template>
     <GuestLayout class="font-serif">
         <Head title="Log in" />
+
         <div class="flex items-center justify-center p-3">
             <h1>ログインページ</h1>
         </div>

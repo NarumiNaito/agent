@@ -1,11 +1,12 @@
 <script setup>
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import { Link } from "@inertiajs/vue3";
+import Footer from "@/Components/Footer.vue";
 </script>
 
 <template>
     <div
-        class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-[url('/images/bg.jpg')]"
+        class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-teal-300"
     >
         <div>
             <Link href="/">
@@ -19,4 +20,5 @@ import { Link } from "@inertiajs/vue3";
             <slot />
         </div>
     </div>
+    <Footer />
 </template>

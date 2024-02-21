@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WorkController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,8 +17,11 @@ use Inertia\Inertia;
 |
 */
 
+
+
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Welcome', 
+    [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -25,9 +29,48 @@ Route::get('/', function () {
     ]);
 });
 
+
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::resource('works', WorkController::class)
+->middleware(['auth', 'verified']);
+
+
+Route::get('/commission', function () {
+    return Inertia::render('Commission');
+})->middleware(['auth', 'verified'])->name('commission');
+
+
+Route::get('/introduction', function () {
+    return Inertia::render('Introduction',[
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION, 
+    ]);
+})->name('introduction');
+
+
+Route::get('/explanation', function () {
+    return Inertia::render('Explanation',[
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+})->name('explanation');
+
+// Route::get('/introduction', function () {
+//     return Inertia::render('Introduction');
+// })->middleware(['auth', 'verified'])->name('introduction');
+
+// Route::get('/explanation', function () {
+//     return Inertia::render('Explanation');
+// })->middleware(['auth', 'verified'])->name('explanation');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

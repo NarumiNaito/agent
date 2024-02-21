@@ -158,7 +158,7 @@ return [
         'content' => '本文',
         'name' => '名前',
         'memo' =>'メモ',
-        'price' => '価格',
+        'price' => '単価',
         'kana' => 'カナ',
         'tel' => '電話番号',
         'email' => 'メールアドレス',
@@ -166,7 +166,8 @@ return [
         'address' => '住所',
         'birthday' => '誕生日',
         'gender' => '性別',
-        
+        'deadline' => '納期目安',
+        'skill' =>'スキル',
     ],
 
 ];
