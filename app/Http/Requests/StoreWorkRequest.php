@@ -25,7 +25,8 @@ class StoreWorkRequest extends FormRequest
     {
         
         return [
-            'name' => ['required', 'max:50'],           
+            'workName' => ['required', 'max:50'], 
+            // 'user_id' => ['required'],          
             'price' => ['required', 'numeric'],
             'deadline' => ['required', 'numeric'],
             'content' => ['required', 'max:255'],

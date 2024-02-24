@@ -5,7 +5,7 @@ import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-import { Link } from "@inertiajs/vue3";
+import { Link } from "@inertiajs/inertia-vue3";
 import Footer from "@/Components/Footer.vue";
 
 const showingNavigationDropdown = ref(false);
@@ -37,21 +37,7 @@ const showingNavigationDropdown = ref(false);
                                     :href="route('dashboard')"
                                     :active="route().current('dashboard')"
                                 >
-                                    ダッシュボード
-                                </NavLink>
-
-                                <NavLink
-                                    :href="route('works.index')"
-                                    :active="route().current('works.index')"
-                                >
-                                    依頼一覧
-                                </NavLink>
-
-                                <NavLink
-                                    :href="route('works.create')"
-                                    :active="route().current('works.create')"
-                                >
-                                    依頼する
+                                    案件一覧
                                 </NavLink>
                             </div>
                         </div>
@@ -67,6 +53,7 @@ const showingNavigationDropdown = ref(false);
                                                 class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-indigo-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
                                                 {{ $page.props.auth.user.name }}
+                                                様
 
                                                 <svg
                                                     class="ml-2 -mr-0.5 h-4 w-4"
@@ -88,14 +75,27 @@ const showingNavigationDropdown = ref(false);
                                         <DropdownLink
                                             :href="route('profile.edit')"
                                         >
-                                            Profile
+                                            プロフィール情報
                                         </DropdownLink>
+
+                                        <DropdownLink
+                                            :href="route('works.create')"
+                                        >
+                                            依頼する
+                                        </DropdownLink>
+
+                                        <DropdownLink
+                                            :href="route('works.index')"
+                                        >
+                                            依頼登録情報
+                                        </DropdownLink>
+
                                         <DropdownLink
                                             :href="route('logout')"
                                             method="post"
                                             as="button"
                                         >
-                                            Log Out
+                                            ログアウト
                                         </DropdownLink>
                                     </template>
                                 </Dropdown>
@@ -158,21 +158,7 @@ const showingNavigationDropdown = ref(false);
                             :href="route('dashboard')"
                             :active="route().current('dashboard')"
                         >
-                            ダッシュボード
-                        </ResponsiveNavLink>
-
-                        <ResponsiveNavLink
-                            :href="route('works.index')"
-                            :active="route().current('works.index')"
-                        >
-                            依頼一覧
-                        </ResponsiveNavLink>
-
-                        <ResponsiveNavLink
-                            :href="route('commission')"
-                            :active="route().current('commission')"
-                        >
-                            依頼する
+                            案件一覧
                         </ResponsiveNavLink>
                     </div>
 
@@ -189,14 +175,26 @@ const showingNavigationDropdown = ref(false);
 
                         <div class="mt-3 space-y-1">
                             <ResponsiveNavLink :href="route('profile.edit')">
-                                Profile
+                                プロフィール情報
                             </ResponsiveNavLink>
+
+                            <ResponsiveNavLink
+                                :href="route('works.create')"
+                                :active="route().current('works.create')"
+                            >
+                                依頼する
+                            </ResponsiveNavLink>
+
+                            <ResponsiveNavLink :href="route('works.index')">
+                                依頼する
+                            </ResponsiveNavLink>
+
                             <ResponsiveNavLink
                                 :href="route('logout')"
                                 method="post"
                                 as="button"
                             >
-                                Log Out
+                                ログアウト
                             </ResponsiveNavLink>
                         </div>
                     </div>

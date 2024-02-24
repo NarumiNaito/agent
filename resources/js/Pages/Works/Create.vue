@@ -10,7 +10,8 @@ defineProps({
 });
 
 const form = reactive({
-    name: null,
+    workName: null,
+    // user_id: null,
     price: null,
     deadline: null,
     content: null,
@@ -41,11 +42,10 @@ const storeWork = () => {
                         <h1
                             class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
                         >
-                            Contact Us
+                            案件依頼
                         </h1>
                         <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-                            Whatever cardigan tote bag tumblr hexagon brooklyn
-                            asymmetrical gentrify.
+                            依頼情報ですので、できるだけ具体的にご記入ください。
                         </p>
                     </div>
                     <div class="lg:w-1/2 md:w-2/3 mx-auto">
@@ -53,15 +53,15 @@ const storeWork = () => {
                             <div class="p-2 w-full">
                                 <div class="relative">
                                     <label
-                                        for="name"
+                                        for="workName"
                                         class="leading-7 text-sm text-gray-600"
                                         >案件名</label
                                     >
                                     <input
                                         type="text"
-                                        id="name"
-                                        name="name"
-                                        v-model="form.name"
+                                        id="workName"
+                                        name="workName"
+                                        v-model="form.workName"
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                     />
                                 </div>

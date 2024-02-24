@@ -24,7 +24,7 @@ class UpdateWorkRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'max:50'],           
+            'workName' => ['required', 'max:50'],           
             'price' => ['required', 'numeric'],
             'deadline' => ['required', 'numeric'],
             'content' => ['required', 'max:255'],

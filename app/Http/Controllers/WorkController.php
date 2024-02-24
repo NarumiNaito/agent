@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreWorkRequest;
 use App\Http\Requests\UpdateWorkRequest;
 use App\Models\Work;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class WorkController extends Controller
@@ -16,12 +17,24 @@ class WorkController extends Controller
      */
     public function index()
     {
-        // dd(Work::select('id','name','price','content','request')->get());
+        // dd(Work::select('id','name','price','content','status')->get());
+    //もと
+        // $works =Work::select('id','user_id','workName','price','deadline','content','skill','memo','status',)
+        // ->orderBy('created_at','desc')->get();
 
-        $works =Work::select('id','name','price','deadline','content','skill','memo','status','created_at')->get();
+        $user_id = Auth::id(); 
+        $works = Work::where('user_id', $user_id)
+        ->select('id','user_id','workName','price','deadline','content','skill','memo','status')
+        ->orderBy('created_at','desc')
+        ->get();
+
+        
+        
+        // dd($works);
 
         return Inertia::render('Works/Index',[
-            'works' =>$works
+            'works' =>$works,
+            'user_id'=>$user_id
         ]);
     }
 
@@ -32,7 +45,9 @@ class WorkController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Works/Create');
+        return Inertia::render('Works/Create',[
+            
+        ]);
     }
 
     /**
@@ -41,23 +56,24 @@ class WorkController extends Controller
      * @param  \App\Http\Requests\StoreWorkRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreWorkRequest $request)
+    public function store(StoreWorkRequest $request, )
     {
         Work::create([
-            'name' => $request->name,
+            'workName' => $request->workName, 
+            'user_id' => Auth::id(),
             'price' => $request->price,
             'deadline' => $request->deadline,
             'content' => $request->content,
             'skill' => $request->skill,
             'memo' => $request->memo,
-        
-
         ]);
+
+
 
         return to_route('works.index')
         ->with([
             'message' => '依頼を登録しました' ,
-            'request' => 'success' 
+            'status' => 'success' 
             ]); 
     }
 
@@ -72,6 +88,7 @@ class WorkController extends Controller
         // dd($work);
         return Inertia::render('Works/Show',[
             'work' => $work
+            
         ]);
     }
 
@@ -99,7 +116,8 @@ class WorkController extends Controller
     {
         // dd($request , $work);
 
-        $work->name = $request->name;
+        $work->workName = $request->workName;
+        // $work->user_id = $request->user_id;
         $work->price = $request->price;
         $work->deadline = $request->deadline;
         $work->content = $request->content;

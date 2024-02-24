@@ -5,6 +5,7 @@ import FlashMessage from "@/Components/FlashMessage.vue";
 
 defineProps({
     works: Array,
+    user_id: Array,
 });
 </script>
 
@@ -38,7 +39,7 @@ defineProps({
                                 <h2
                                     class="text-xl tracking-widest title-font p-2 font-medium border-b"
                                 >
-                                    案件名 : {{ work.name }}
+                                    案件名 : {{ work.workName }}
                                 </h2>
                                 <h1
                                     class="text-xl p-2 mb-4 border-b border-gray-200 leading-none"
@@ -94,9 +95,9 @@ defineProps({
                                         >詳細を見る</Link
                                     >
                                 </div>
-                                <p class="text-xs text-gray-500 mt-3 text-r">
+                                <!-- <p class="text-xs text-gray-500 mt-3 text-r">
                                     登録日 : {{ work.created_at }}
-                                </p>
+                                </p> -->
                             </div>
                         </div>
                     </div>

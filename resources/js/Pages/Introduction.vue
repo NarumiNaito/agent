@@ -100,21 +100,21 @@ defineProps({
                     <Link
                         v-if="$page.props.auth.user"
                         :href="route('dashboard')"
-                        class="flex-shrink-0 rounded-full text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0"
+                        class="flex-shrink-0 rounded-full text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 text-lg mt-10 sm:mt-0"
                         >ログインページ</Link
                     >
 
                     <template v-else>
                         <Link
                             :href="route('login')"
-                            class="flex-shrink-0 rounded-full text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0 mr-5"
+                            class="flex-shrink-0 rounded-full text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 text-lg mt-10 sm:mt-0 mr-5"
                             >会員ログイン</Link
                         >
 
                         <Link
                             v-if="canRegister"
                             :href="route('register')"
-                            class="flex-shrink-0 rounded-full text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0 mr-5"
+                            class="flex-shrink-0 rounded-full text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 text-lg mt-10 sm:mt-0 mr-5"
                             >新規登録</Link
                         >
                     </template>
