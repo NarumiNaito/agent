@@ -91,7 +91,7 @@ const updateWork = (id) => {
                                     <label
                                         for="deadline"
                                         class="leading-7 text-sm text-gray-600"
-                                        >納期目安</label
+                                        >納期目安(◯日)</label
                                     >
                                     <input
                                         type="number"

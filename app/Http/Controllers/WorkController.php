@@ -25,8 +25,9 @@ class WorkController extends Controller
         $user_id = Auth::id(); 
         $works = Work::where('user_id', $user_id)
         ->select('id','user_id','workName','price','deadline','content','skill','memo','status')
-        ->orderBy('created_at','desc')
-        ->get();
+        ->orderBy('updated_at','desc')
+        // ->get();
+        ->paginate(3);
 
         
         
@@ -34,7 +35,7 @@ class WorkController extends Controller
 
         return Inertia::render('Works/Index',[
             'works' =>$works,
-            'user_id'=>$user_id
+            // 'user_id'=>$user_id
         ]);
     }
 
@@ -142,6 +143,11 @@ class WorkController extends Controller
      */
     public function destroy(Work $work)
     {
-        //
+        $work->delete();
+        return to_route('works.index')
+        ->with([
+        'message' => '削除しました',
+        'status' => 'danger'
+        ]); 
     }
 }

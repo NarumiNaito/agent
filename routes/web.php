@@ -36,6 +36,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+
+
 Route::resource('works', WorkController::class)
 ->middleware(['auth', 'verified']);
 
@@ -64,6 +66,8 @@ Route::get('/explanation', function () {
     ]);
 })->name('explanation');
 
+
+
 // Route::get('/introduction', function () {
 //     return Inertia::render('Introduction');
 // })->middleware(['auth', 'verified'])->name('introduction');
@@ -72,13 +76,34 @@ Route::get('/explanation', function () {
 //     return Inertia::render('Explanation');
 // })->middleware(['auth', 'verified'])->name('explanation');
 
+Route::get('/updatepasswordform', function () {
+    return Inertia::render('UpdatePasswordForm');
+})->name('updatepasswordform');
+Route::put('/updatepasswordform', function () {
+    return Inertia::render('UpdatePasswordForm');
+})->name('updatepasswordform');
+
+Route::get('/deletuserform', function () {
+    return Inertia::render('DeleteUserForm');
+})->name('deletuserform');
+Route::delete('/deletuserform', function () {
+    return Inertia::render('DeleteUserForm');
+})->name('deletuserform');
+
+
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/show', [ProfileController::class, 'show'])->name('profile.show');
+    // Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 // Route::resource('profile', ProfileController::class)
 // ->middleware(['auth', 'verified']);
+
 
 require __DIR__.'/auth.php';

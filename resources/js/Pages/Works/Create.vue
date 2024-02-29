@@ -61,6 +61,7 @@ const storeWork = () => {
                                         type="text"
                                         id="workName"
                                         name="workName"
+                                        placeholder="案件名を入力"
                                         v-model="form.workName"
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                     />
@@ -72,12 +73,13 @@ const storeWork = () => {
                                     <label
                                         for="price"
                                         class="leading-7 text-sm text-gray-600"
-                                        >単価</label
+                                        >単価(◯円)</label
                                     >
                                     <input
                                         type="number"
                                         id="price"
                                         name="price"
+                                        placeholder="単価を入力"
                                         v-model="form.price"
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                     />
@@ -89,11 +91,12 @@ const storeWork = () => {
                                     <label
                                         for="deadline"
                                         class="leading-7 text-sm text-gray-600"
-                                        >納期目安</label
+                                        >納期目安(◯日)</label
                                     >
                                     <input
                                         type="number"
                                         id="deadline"
+                                        placeholder="納期目安を入力"
                                         name="deadline"
                                         v-model="form.deadline"
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -111,6 +114,7 @@ const storeWork = () => {
                                     <textarea
                                         id="content"
                                         name="content"
+                                        placeholder="業務内容を入力"
                                         v-model="form.content"
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                                     ></textarea>
@@ -127,6 +131,7 @@ const storeWork = () => {
                                     <textarea
                                         id="skill"
                                         name="skill"
+                                        placeholder="求めるスキルを入力"
                                         v-model="form.skill"
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                                     ></textarea>
@@ -138,11 +143,12 @@ const storeWork = () => {
                                     <label
                                         for="memo"
                                         class="leading-7 text-sm text-gray-600"
-                                        >メモ</label
+                                        >その他</label
                                     >
                                     <textarea
                                         id="memo"
                                         name="memo"
+                                        placeholder="その他を入力"
                                         v-model="form.memo"
                                         class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                                     ></textarea>

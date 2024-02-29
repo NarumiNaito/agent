@@ -1,55 +1,53 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link } from "@inertiajs/vue3";
-import { nl2br } from "@/common";
-import { Inertia } from "@inertiajs/inertia";
+import FlashMessage from "@/Components/FlashMessage.vue";
 import dayjs from "dayjs";
 
 defineProps({
-    work: Object,
-    errors: Object,
+    users: Array,
+    // user_id: Array,
 });
-
-const deleteItem = (id) => {
-    Inertia.delete(route("works.destroy", { work: id }), {
-        onBefore: () => confirm("本当に削除しますか?"),
-    });
-};
 </script>
 
 <template>
-    <Head title="詳細画面" />
+    <Head title="会員登録情報" />
 
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                詳細画面
+                会員登録情報
             </h2>
         </template>
 
         <section class="text-gray-600 body-font relative">
             <div class="container px-5 py-12 mx-auto">
-                <div class="flex flex-col text-center w-full mb-4">
+                <div class="flex flex-col text-center w-full">
                     <h1
                         class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
                     >
-                        詳細画面
+                        会員登録情報
                     </h1>
                 </div>
-                <div class="lg:w-1/2 md:w-2/3 mx-auto">
+            </div>
+            <div class="mx-auto flex items-center justify-center mb-1">
+                <FlashMessage />
+            </div>
+            <div v-for="user in users" :key="user.id">
+                <div class="lg:w-1/2 md:w-2/3 container mx-auto">
                     <div class="flex flex-wrap -m-2">
                         <div class="p-2 w-full">
                             <div class="relative">
                                 <label
-                                    for="workName"
+                                    for="name"
                                     class="leading-7 text-sm text-gray-600"
                                     >案件名</label
                                 >
                                 <div
-                                    id="workName"
+                                    id="name"
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                 >
-                                    {{ work.workName }}
+                                    {{ user.name }}
                                 </div>
                             </div>
                         </div>
@@ -57,15 +55,15 @@ const deleteItem = (id) => {
                         <div class="p-2 w-full">
                             <div class="relative">
                                 <label
-                                    for="price"
+                                    for="email"
                                     class="leading-7 text-sm text-gray-600"
-                                    >単価</label
+                                    >メールアドレス</label
                                 >
                                 <div
-                                    id="price"
+                                    id="email"
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                 >
-                                    {{ work.price }}
+                                    {{ user.email }}
                                 </div>
                             </div>
                         </div>
@@ -73,15 +71,15 @@ const deleteItem = (id) => {
                         <div class="p-2 w-full">
                             <div class="relative">
                                 <label
-                                    for="deadline"
+                                    for="tel"
                                     class="leading-7 text-sm text-gray-600"
-                                    >納期目安(◯日)</label
+                                    >電話番号</label
                                 >
                                 <div
-                                    id="deadline"
+                                    id="tel"
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                 >
-                                    {{ work.deadline }}
+                                    {{ user.tel }}
                                 </div>
                             </div>
                         </div>
@@ -89,59 +87,49 @@ const deleteItem = (id) => {
                         <div class="p-2 w-full">
                             <div class="relative">
                                 <label
-                                    for="content"
+                                    for="tel"
                                     class="leading-7 text-sm text-gray-600"
-                                    >業務内容</label
+                                    >郵便番号</label
                                 >
                                 <div
-                                    id="content"
-                                    v-html="nl2br(work.content)"
-                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                                ></div>
+                                    id="tel"
+                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                >
+                                    {{ user.postcode }}
+                                </div>
                             </div>
                         </div>
 
                         <div class="p-2 w-full">
                             <div class="relative">
                                 <label
-                                    for="skill"
+                                    for="tel"
                                     class="leading-7 text-sm text-gray-600"
-                                    >スキル</label
+                                    >住所</label
                                 >
                                 <div
-                                    id="skill"
-                                    v-html="nl2br(work.skill)"
-                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                                ></div>
+                                    id="tel"
+                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                >
+                                    {{ user.address }}
+                                </div>
                             </div>
                         </div>
 
                         <div class="p-2 w-full">
                             <div class="relative">
                                 <label
-                                    for="memo"
+                                    for="detail"
                                     class="leading-7 text-sm text-gray-600"
-                                    >メモ</label
+                                    >企業詳細</label
                                 >
                                 <div
-                                    id="memo"
-                                    v-html="nl2br(work.memo)"
-                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                                ></div>
+                                    id="detail"
+                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                >
+                                    {{ user.detail }}
+                                </div>
                             </div>
-                        </div>
-
-                        <label
-                            for="request"
-                            class="leading-7 text-sm text-gray-600"
-                            >依頼状況</label
-                        >
-                        <div
-                            id="request"
-                            class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                        >
-                            <span v-if="work.status === 1">依頼中</span>
-                            <span v-if="work.status === 0">停止中</span>
                         </div>
 
                         <div class="p-2 w-full">
@@ -156,7 +144,7 @@ const deleteItem = (id) => {
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                 >
                                     {{
-                                        dayjs(work.created_at).format(
+                                        dayjs(user.created_at).format(
                                             "YYYY年MM月DD日 HH時mm分"
                                         )
                                     }}
@@ -176,7 +164,7 @@ const deleteItem = (id) => {
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                 >
                                     {{
-                                        dayjs(work.updated_at).format(
+                                        dayjs(user.updated_at).format(
                                             "YYYY年MM月DD日 HH時mm分"
                                         )
                                     }}
@@ -187,18 +175,11 @@ const deleteItem = (id) => {
                         <div class="p-8 w-full flex">
                             <Link
                                 as="button"
-                                :href="route('works.edit', { work: work.id })"
+                                :href="route('profile.edit', { user: user.id })"
                                 class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                             >
                                 編集する
                             </Link>
-
-                            <button
-                                @click="deleteItem(work.id)"
-                                class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg"
-                            >
-                                削除する
-                            </button>
                         </div>
                     </div>
                 </div>

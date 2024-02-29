@@ -31,13 +31,14 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" value="メールアドレス" />
 
                 <TextInput
                     id="email"
                     type="email"
                     class="mt-1 block w-full"
                     v-model="form.email"
+                    placeholder="メールアドレスを入力"
                     required
                     autofocus
                     autocomplete="username"
@@ -47,13 +48,14 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="パスワード" />
 
                 <TextInput
                     id="password"
                     type="password"
                     class="mt-1 block w-full"
                     v-model="form.password"
+                    placeholder="新しいパスワードを入力"
                     required
                     autocomplete="new-password"
                 />
@@ -64,7 +66,7 @@ const submit = () => {
             <div class="mt-4">
                 <InputLabel
                     for="password_confirmation"
-                    value="Confirm Password"
+                    value="パスワード確認用"
                 />
 
                 <TextInput
@@ -72,6 +74,7 @@ const submit = () => {
                     type="password"
                     class="mt-1 block w-full"
                     v-model="form.password_confirmation"
+                    placeholder="パスワードをもう一度入力"
                     required
                     autocomplete="new-password"
                 />
@@ -87,7 +90,7 @@ const submit = () => {
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
-                    Reset Password
+                    パスワードを再設定しました
                 </PrimaryButton>
             </div>
         </form>

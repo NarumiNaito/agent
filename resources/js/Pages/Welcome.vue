@@ -4,6 +4,7 @@ import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import Footer from "@/Components/Footer.vue";
+import FlashMessage from "@/Components/FlashMessage.vue";
 
 defineProps({
     canLogin: Boolean,
@@ -65,44 +66,23 @@ defineProps({
             </div>
         </header>
         <div class="bg-teal-200">
-            <section class="text-gray-600 body-font">
-                <div
-                    class="container mx-auto flex px-5 items-center justify-center flex-col"
-                >
-                    <div
-                        class="reactive w-screen flex justify-center items-center"
-                    >
-                        <img
-                            class="mb-10 object-cover object-center rounded"
-                            alt="hero"
-                            src="/images/main.jpg"
-                        />
+            <FlashMessage />
+            <section class="h-full"></section>
 
-                        <h1
-                            class="absolute sm:text-5xl sm:mb-24 md:text-6xl md:mb-24 lg:text-8xl lg:mb-48 text-white"
-                        >
-                            地場産エージェント
-                        </h1>
-                        <h1
-                            class="absolute text-2xl md:text-3xl lg:text-5xl text-white"
-                        >
-                            企業と企業の架け橋へ
-                        </h1>
-                    </div>
-                </div>
-            </section>
-
-            <section class="h-[150px]"></section>
-
-            <section class="pt-48 pb-48 relative">
+            <section class="pt-48 pb-60 relative">
                 <div
                     class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed"
                     style="background-image: url(/images/parallax.jpg)"
                 ></div>
                 <h1
-                    class="display-2 text-center relative title-font sm:text-4xl text-3xl mb-4 font-medium text-white"
+                    class="display-2 text-center relative title-font sm:text-5xl mb-6 md:text-6xl md:mb-10 font-medium text-white"
                 >
-                    地場産業の活性化に向けて
+                    地場産エージェント
+                </h1>
+                <h1
+                    class="display-2 text-center relative title-font sm:text-3xl md:text-4xl font-medium text-white"
+                >
+                    企業と企業の駆け足へ
                 </h1>
             </section>
             <section class="h-[100px]"></section>
@@ -127,9 +107,11 @@ defineProps({
                             class="title-font sm:text-4xl text-3xl mb-4 font-medium"
                         >
                             お仕事を掲示板で共有
-                            <br
-                                class="hidden lg:inline-block"
-                            />現状の依頼を見える化
+                        </h1>
+                        <h1
+                            class="title-font sm:text-4xl text-3xl mb-4 font-medium"
+                        >
+                            現状の依頼を見える化
                         </h1>
                         <p class="mb-8 leading-relaxed">
                             掲示板を共有することで得意不得意で仕事依頼及び受注ができ企業のミスマッチを防止し、
@@ -151,9 +133,11 @@ defineProps({
                             class="title-font sm:text-4xl text-3xl mb-4 font-medium"
                         >
                             新規企業開拓で事業拡大
-                            <br
-                                class="hidden lg:inline-block"
-                            />後世へ繋がる若手職人の育成へ
+                        </h1>
+                        <h1
+                            class="title-font sm:text-4xl text-3xl mb-4 font-medium"
+                        >
+                            後世へ繋がる若手職人の育成へ
                         </h1>
                         <p class="mb-8 leading-relaxed">
                             既存の付き合いももちろん、新規企業を開拓することにより新たな発展と地場産業全体の活性化、また優れた技術力を後世の若手職人に繋ぐチャンスが広がる。

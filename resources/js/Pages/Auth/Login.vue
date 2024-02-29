@@ -26,72 +26,79 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout class="font-serif">
-        <Head title="Log in" />
+    <div class="bg-teal-100">
+        <GuestLayout class="font-serif">
+            <Head title="Log in" />
 
-        <div class="flex items-center justify-center p-3">
-            <h1>ログインページ</h1>
-        </div>
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
-        </div>
-
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="メールアドレス" />
-
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
-
-                <InputError class="mt-2" :message="form.errors.email" />
+            <div class="flex items-center justify-center p-3">
+                <h1>ログインページ</h1>
+            </div>
+            <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+                {{ status }}
             </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="パスワード" />
+            <form @submit.prevent="submit">
+                <div>
+                    <InputLabel for="email" value="メールアドレス" />
 
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                />
+                    <TextInput
+                        id="email"
+                        type="email"
+                        class="mt-1 block w-full"
+                        v-model="form.email"
+                        placeholder="メールアドレスを入力"
+                        required
+                        autofocus
+                        autocomplete="username"
+                    />
 
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
+                    <InputError class="mt-2" :message="form.errors.email" />
+                </div>
 
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">必須</span>
-                </label>
-            </div>
+                <div class="mt-4">
+                    <InputLabel for="password" value="パスワード" />
 
-            <div class="flex items-center justify-end mt-4">
-                <!-- <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    パスワードを忘れた方
-                </Link> -->
+                    <TextInput
+                        id="password"
+                        type="password"
+                        class="mt-1 block w-full"
+                        v-model="form.password"
+                        placeholder="パスワードを入力"
+                        required
+                        autocomplete="current-password"
+                    />
 
-                <PrimaryButton
-                    class="ml-4"
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
-                >
-                    ログイン
-                </PrimaryButton>
-            </div>
-        </form>
-    </GuestLayout>
+                    <InputError class="mt-2" :message="form.errors.password" />
+                </div>
+
+                <div class="block mt-4">
+                    <label class="flex items-center">
+                        <Checkbox
+                            name="remember"
+                            v-model:checked="form.remember"
+                        />
+                        <span class="ml-2 text-sm text-gray-600">必須</span>
+                    </label>
+                </div>
+
+                <div class="flex items-center justify-end mt-4">
+                    <Link
+                        v-if="canResetPassword"
+                        :href="route('password.request')"
+                        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                        パスワードを忘れた方
+                    </Link>
+
+                    <PrimaryButton
+                        class="ml-4"
+                        :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing"
+                    >
+                        ログイン
+                    </PrimaryButton>
+                </div>
+            </form>
+        </GuestLayout>
+    </div>
 </template>

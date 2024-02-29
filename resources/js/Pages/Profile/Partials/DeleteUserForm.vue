@@ -40,27 +40,28 @@ const closeModal = () => {
 <template>
     <section class="space-y-6">
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Delete Account</h2>
+            <h2 class="text-lg font-medium text-gray-900">
+                アカウント削除はこちら
+            </h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                Once your account is deleted, all of its resources and data will
-                be permanently deleted. Before deleting your account, please
-                download any data or information that you wish to retain.
+                アカウントが削除されると、そのリソースとデータはすべて削除されます。
             </p>
         </header>
 
-        <DangerButton @click="confirmUserDeletion">Delete Account</DangerButton>
+        <DangerButton @click="confirmUserDeletion"
+            >アカウントを削除する</DangerButton
+        >
 
         <Modal :show="confirmingUserDeletion" @close="closeModal">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900">
-                    Are you sure you want to delete your account?
+                    本当にアカウントを削除しますか？
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-600">
-                    Once your account is deleted, all of its resources and data
-                    will be permanently deleted. Please enter your password to
-                    confirm you would like to permanently delete your account.
+                    アカウントが削除されると、すべてのリソースとデータは永久に削除されます。
+                    宜しければパスワードを入力し削除ボタンを押してください。
                 </p>
 
                 <div class="mt-6">
@@ -76,7 +77,7 @@ const closeModal = () => {
                         v-model="form.password"
                         type="password"
                         class="mt-1 block w-3/4"
-                        placeholder="Password"
+                        placeholder="パスワードを入力"
                         @keyup.enter="deleteUser"
                     />
 
@@ -85,7 +86,7 @@ const closeModal = () => {
 
                 <div class="mt-6 flex justify-end">
                     <SecondaryButton @click="closeModal">
-                        Cancel
+                        編集に戻る
                     </SecondaryButton>
 
                     <DangerButton
@@ -94,7 +95,7 @@ const closeModal = () => {
                         :disabled="form.processing"
                         @click="deleteUser"
                     >
-                        Delete Account
+                        削除する
                     </DangerButton>
                 </div>
             </div>

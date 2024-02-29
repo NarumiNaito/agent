@@ -22,10 +22,23 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'tel',
+        'postcode',
+        'address',
+        'detail'
     ];
 
     public function work(){
         return $this->hasMany(Work::class);
+    }
+
+    public function scopeSearchUsers($query, $input = null)
+    {
+        if(!empty($input)){
+        if(User::where('name', 'like', $input . '%' )->exists()){
+            return $query->where('name', 'like', $input . '%' );
+            }
+        }
     }
 
     /**

@@ -39,6 +39,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     案件一覧
                                 </NavLink>
+                                <NavLink
+                                    :href="route('profile.show')"
+                                    :active="route().current('profile.show')"
+                                >
+                                    会員企業一覧
+                                </NavLink>
                             </div>
                         </div>
 
@@ -73,7 +79,7 @@ const showingNavigationDropdown = ref(false);
 
                                     <template #content>
                                         <DropdownLink
-                                            :href="route('profile.edit')"
+                                            :href="route('profile.index')"
                                         >
                                             プロフィール情報
                                         </DropdownLink>
@@ -96,6 +102,22 @@ const showingNavigationDropdown = ref(false);
                                             as="button"
                                         >
                                             ログアウト
+                                        </DropdownLink>
+
+                                        <DropdownLink
+                                            :href="route('updatepasswordform')"
+                                            method="put"
+                                            as="button"
+                                        >
+                                            パスワード変更
+                                        </DropdownLink>
+
+                                        <DropdownLink
+                                            :href="route('deletuserform')"
+                                            method="delete"
+                                            as="button"
+                                        >
+                                            アカウント削除
                                         </DropdownLink>
                                     </template>
                                 </Dropdown>
@@ -161,6 +183,14 @@ const showingNavigationDropdown = ref(false);
                             案件一覧
                         </ResponsiveNavLink>
                     </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink
+                            :href="route('profile.show')"
+                            :active="route().current('profile.show')"
+                        >
+                            会員企業一覧
+                        </ResponsiveNavLink>
+                    </div>
 
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
@@ -174,7 +204,7 @@ const showingNavigationDropdown = ref(false);
                         </div>
 
                         <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink :href="route('profile.edit')">
+                            <ResponsiveNavLink :href="route('profile.index')">
                                 プロフィール情報
                             </ResponsiveNavLink>
 
@@ -186,7 +216,7 @@ const showingNavigationDropdown = ref(false);
                             </ResponsiveNavLink>
 
                             <ResponsiveNavLink :href="route('works.index')">
-                                依頼する
+                                依頼登録情報
                             </ResponsiveNavLink>
 
                             <ResponsiveNavLink
@@ -195,6 +225,22 @@ const showingNavigationDropdown = ref(false);
                                 as="button"
                             >
                                 ログアウト
+                            </ResponsiveNavLink>
+
+                            <ResponsiveNavLink
+                                :href="route('updatepasswordform')"
+                                method="put"
+                                as="button"
+                            >
+                                パスワード変更
+                            </ResponsiveNavLink>
+
+                            <ResponsiveNavLink
+                                :href="route('deletuserform')"
+                                method="delete"
+                                as="button"
+                            >
+                                アカウント削除
                             </ResponsiveNavLink>
                         </div>
                     </div>
