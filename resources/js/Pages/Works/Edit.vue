@@ -21,6 +21,12 @@ const form = reactive({
     status: props.work.status,
 });
 
+const deleteItem = (id) => {
+    Inertia.delete(route("works.destroy", { work: id }), {
+        onBefore: () => confirm("本当に削除しますか?"),
+    });
+};
+
 const updateWork = (id) => {
     Inertia.put(route("works.update", { work: id }), form);
 };
@@ -177,11 +183,17 @@ const updateWork = (id) => {
                                 </div>
                             </div>
 
-                            <div class="p-2 w-full">
+                            <div class="px-24 mt-3 w-full flex">
                                 <button
                                     class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                                 >
                                     更新する
+                                </button>
+                                <button
+                                    @click="deleteItem(form.id)"
+                                    class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg"
+                                >
+                                    削除する
                                 </button>
                             </div>
                         </div>

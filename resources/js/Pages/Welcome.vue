@@ -17,73 +17,29 @@ defineProps({
 <template>
     <Head title="Welcome" />
     <div class="bg-teal-300 font-serif">
-        <header class="body-font">
-            <div
-                class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row"
-            >
-                <a
-                    class="flex title-font font-medium items-center text-gray-600 mb-4 md:mb-0"
-                >
-                    <Link href="/">
-                        <ApplicationLogo class="block h-12 w-12 fill-current" />
-                    </Link>
-                    <span class="ml-3 text-xl">地場産エージェント</span>
-                </a>
-                <div class="flex">
-                    <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <NavLink
-                            :href="route('introduction')"
-                            :active="route().current('introduction')"
-                        >
-                            サービスの特徴
-                        </NavLink>
-
-                        <NavLink
-                            :href="route('explanation')"
-                            :active="route().current('explanation')"
-                        >
-                            ご利用の流れ
-                        </NavLink>
-                    </div>
-                    <div class="sm:hidden">
-                        <div class="pt-2 pb-3 space-y-1">
-                            <ResponsiveNavLink
-                                :href="route('introduction')"
-                                :active="route().current('introduction')"
-                            >
-                                サービスの特徴
-                            </ResponsiveNavLink>
-                            <ResponsiveNavLink
-                                :href="route('explanation')"
-                                :active="route().current('explanation')"
-                            >
-                                ご利用の流れ
-                            </ResponsiveNavLink>
-                        </div>
-                    </div>
-                </div>
+        <div class="bg-teal-200 -z-50">
+            <div class="flex justify-center">
+                <FlashMessage />
             </div>
-        </header>
-        <div class="bg-teal-200">
-            <FlashMessage />
-            <section class="h-full"></section>
+            <!-- <section class="h-full"></section> -->
 
             <section class="pt-48 pb-60 relative">
                 <div
                     class="absolute w-full h-full top-0 left-0 bg-cover bg-center bg-no-repeat opacity-80 bg-fixed"
                     style="background-image: url(/images/parallax.jpg)"
                 ></div>
-                <h1
-                    class="display-2 text-center relative title-font sm:text-5xl mb-6 md:text-6xl md:mb-10 font-medium text-white"
-                >
-                    地場産エージェント
-                </h1>
-                <h1
-                    class="display-2 text-center relative title-font sm:text-3xl md:text-4xl font-medium text-white"
-                >
-                    企業と企業の駆け足へ
-                </h1>
+                <div class="mt-36">
+                    <h1
+                        class="display-2 text-center relative title-font sm:text-5xl mb-6 md:text-6xl md:mb-10 font-medium text-white"
+                    >
+                        地場産エージェント
+                    </h1>
+                    <h1
+                        class="display-2 text-center relative title-font sm:text-3xl md:text-4xl font-medium text-white"
+                    >
+                        企業と企業の駆け足へ
+                    </h1>
+                </div>
             </section>
             <section class="h-[100px]"></section>
 
@@ -124,7 +80,7 @@ defineProps({
 
             <section class="text-gray-600 body-font">
                 <div
-                    class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center"
+                    class="container mx-auto flex px-5 py-12 md:flex-row flex-col items-center"
                 >
                     <div
                         class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center"
@@ -153,7 +109,7 @@ defineProps({
                 </div>
             </section>
             <section>
-                <div class="animate-bounce [animation-delay:1s]">
+                <div class="animate-bounce [animation-delay:1s] py-10">
                     <div v-if="canLogin" class="flex justify-center">
                         <Link
                             v-if="$page.props.auth.user"
@@ -183,21 +139,75 @@ defineProps({
             <Footer class="border-t-2 border-gray-500" />
 
             <div class="">
+                <header class="body-font">
+                    <div
+                        class="bg-teal-300 w-full sm:fixed sm:top-0 sm:right-0 mx-auto flex flex-wrap p-5 flex-col md:flex-row"
+                    >
+                        <a
+                            class="flex title-font font-medium items-center text-gray-600 mb-4 md:mb-0"
+                        >
+                            <Link href="/">
+                                <ApplicationLogo
+                                    class="block h-12 w-12 fill-current"
+                                />
+                            </Link>
+                            <span class="ml-3 text-xl">地場産エージェント</span>
+                        </a>
+                        <div class="flex">
+                            <!-- Navigation Links -->
+                            <div
+                                class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
+                            >
+                                <NavLink
+                                    :href="route('introduction')"
+                                    :active="route().current('introduction')"
+                                >
+                                    サービスの特徴
+                                </NavLink>
+
+                                <NavLink
+                                    :href="route('explanation')"
+                                    :active="route().current('explanation')"
+                                >
+                                    ご利用の流れ
+                                </NavLink>
+                            </div>
+                            <div class="sm:hidden">
+                                <div class="pt-2 pb-3 space-y-1">
+                                    <ResponsiveNavLink
+                                        :href="route('introduction')"
+                                        :active="
+                                            route().current('introduction')
+                                        "
+                                    >
+                                        サービスの特徴
+                                    </ResponsiveNavLink>
+                                    <ResponsiveNavLink
+                                        :href="route('explanation')"
+                                        :active="route().current('explanation')"
+                                    >
+                                        ご利用の流れ
+                                    </ResponsiveNavLink>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
                 <div
                     v-if="canLogin"
-                    class="sm:fixed sm:top-0 sm:right-0 p-6 text-right"
+                    class="sm:fixed sm:top-0 sm:right-0 mt-12 mr-5 md:mt-7 text-right"
                 >
                     <Link
                         v-if="$page.props.auth.user"
                         :href="route('dashboard')"
-                        class="flex-shrink-0 rounded-full text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0"
+                        class="flex-shrink-0 rounded-full text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 text-lg mt-10 sm:mt-0"
                         >ログインページ</Link
                     >
 
                     <template v-else>
                         <Link
                             :href="route('login')"
-                            class="flex-shrink-0 rounded-full text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0 mr-5"
+                            class="flex-shrink-0 rounded-full text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 text-lg mt-10 sm:mt-0 mr-5"
                             >会員ログイン</Link
                         >
 

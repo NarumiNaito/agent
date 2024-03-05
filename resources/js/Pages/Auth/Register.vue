@@ -6,6 +6,7 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import TextAreaInput from "@/Components/TextAreaInput.vue";
+import { Core as YubinBangoCore } from "yubinbango-core2";
 
 const form = useForm({
     name: "",
@@ -22,6 +23,12 @@ const form = useForm({
 const submit = () => {
     form.post(route("register"), {
         onFinish: () => form.reset("password", "password_confirmation"),
+    });
+};
+
+const fetchAddress = () => {
+    new YubinBangoCore(String(form.postcode), (value) => {
+        form.address = value.region + value.locality + value.street;
     });
 };
 </script>
@@ -79,6 +86,7 @@ const submit = () => {
                         placeholder="電話番号を入力"
                         required
                     />
+                    <InputError class="mt-2" :message="form.errors.tel" />
                 </div>
 
                 <div class="mt-4">
@@ -91,6 +99,7 @@ const submit = () => {
                         v-model="form.postcode"
                         placeholder="郵便番号を入力"
                         required
+                        @change="fetchAddress"
                     />
                 </div>
 

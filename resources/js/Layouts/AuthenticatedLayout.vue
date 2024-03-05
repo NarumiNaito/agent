@@ -21,7 +21,7 @@ const showingNavigationDropdown = ref(false);
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
+                                <Link :href="route('works.list')">
                                     <ApplicationLogo
                                         class="block h-12 w-12 fill-current text-gray-800"
                                     />
@@ -34,16 +34,24 @@ const showingNavigationDropdown = ref(false);
                                 class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
                             >
                                 <NavLink
-                                    :href="route('dashboard')"
-                                    :active="route().current('dashboard')"
+                                    :href="route('works.list')"
+                                    :active="route().current('works.list')"
                                 >
                                     案件一覧
                                 </NavLink>
+
                                 <NavLink
-                                    :href="route('profile.show')"
-                                    :active="route().current('profile.show')"
+                                    :href="route('profile.index')"
+                                    :active="route().current('profile.index')"
                                 >
                                     会員企業一覧
+                                </NavLink>
+
+                                <NavLink
+                                    :href="route('contacts.show')"
+                                    :active="route().current('contacts.show')"
+                                >
+                                    問合せ一覧
                                 </NavLink>
                             </div>
                         </div>
@@ -79,7 +87,7 @@ const showingNavigationDropdown = ref(false);
 
                                     <template #content>
                                         <DropdownLink
-                                            :href="route('profile.index')"
+                                            :href="route('profile.show')"
                                         >
                                             プロフィール情報
                                         </DropdownLink>
@@ -177,18 +185,28 @@ const showingNavigationDropdown = ref(false);
                 >
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink
-                            :href="route('dashboard')"
-                            :active="route().current('dashboard')"
+                            :href="route('works.list')"
+                            :active="route().current('works.list')"
                         >
                             案件一覧
                         </ResponsiveNavLink>
                     </div>
+
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink
-                            :href="route('profile.show')"
-                            :active="route().current('profile.show')"
+                            :href="route('profile.index')"
+                            :active="route().current('profile.index')"
                         >
                             会員企業一覧
+                        </ResponsiveNavLink>
+                    </div>
+
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink
+                            :href="route('contacts.show')"
+                            :active="route().current('contacts.show')"
+                        >
+                            問合せ履歴
                         </ResponsiveNavLink>
                     </div>
 
@@ -204,7 +222,7 @@ const showingNavigationDropdown = ref(false);
                         </div>
 
                         <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink :href="route('profile.index')">
+                            <ResponsiveNavLink :href="route('profile.show')">
                                 プロフィール情報
                             </ResponsiveNavLink>
 

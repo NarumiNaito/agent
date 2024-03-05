@@ -5,11 +5,27 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreWorkRequest;
 use App\Http\Requests\UpdateWorkRequest;
 use App\Models\Work;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class WorkController extends Controller
 {
+
+    public function list(Request $request){
+        
+        $works = Work::searchWorks($request->search)
+        ->select('id', 'user_id', 'workName', 'price', 'deadline', 'content', 'skill', 'memo', 'status','created_at','updated_at')
+        ->where('status',1)
+        ->orderBy('updated_at', 'desc')
+        ->paginate(3);
+        
+        return Inertia::render('Works/List', [
+        'works' => $works
+        ]);
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -86,9 +102,17 @@ class WorkController extends Controller
      */
     public function show(Work $work)
     {
-        // dd($work);
+
+        $user_id = Auth::id(); 
+        $works = Work::where('user_id', $user_id)
+        ->select('id','user_id','workName','price','deadline','content','skill','memo','status')
+        ->orderBy('updated_at','desc')
+        // ->get();
+        ->paginate(3);
+
+        // dd($works);
         return Inertia::render('Works/Show',[
-            'work' => $work
+            'works' => $works
             
         ]);
     }
@@ -144,6 +168,7 @@ class WorkController extends Controller
     public function destroy(Work $work)
     {
         $work->delete();
+        
         return to_route('works.index')
         ->with([
         'message' => '削除しました',

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Work;
+use App\Models\Contact;
 
 class User extends Authenticatable
 {
@@ -30,6 +31,10 @@ class User extends Authenticatable
 
     public function work(){
         return $this->hasMany(Work::class);
+    }
+
+    public function contact(){
+        return $this->hasMany(Contact::class);
     }
 
     public function scopeSearchUsers($query, $input = null)

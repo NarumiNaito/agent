@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WorkController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,11 +36,17 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::resource('contacts', ContactController::class)
+->middleware(['auth', 'verified']);
 
+Route::get('/works/list', [WorkController::class, 'list'])
+->name('works.list')
+->middleware(['auth', 'verified']);
 
 
 Route::resource('works', WorkController::class)
 ->middleware(['auth', 'verified']);
+
 
 
 Route::get('/commission', function () {
